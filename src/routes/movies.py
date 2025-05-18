@@ -43,16 +43,16 @@ async def get_movies(
         "total_items": items,
     }
 
-    @router.get("/movies/{movie_id}/", response_model=MovieDetailResponseSchema)
-    async def get_movie_by_id(
-            movie_id: int,
-            db: AsyncSession = Depends(get_db),
-    ) -> MovieDetailResponseSchema:
-        movie = await db.get(MovieModel, movie_id)
-        if not movie:
-            raise HTTPException(
-                status_code=404,
-                detail="Movie with the given ID was not found."
-            )
 
-        return movie
+@router.get("/movies/{movie_id}/", response_model=MovieDetailResponseSchema)
+async def get_movie_by_id(
+    movie_id: int,
+    db: AsyncSession = Depends(get_db),
+) -> MovieDetailResponseSchema:
+    movie = await db.get(MovieModel, movie_id)
+    if not movie:
+        raise HTTPException(
+            status_code=404,
+            detail="Movie with the given ID was not found."
+        )
+    return movie
