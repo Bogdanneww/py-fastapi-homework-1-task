@@ -40,7 +40,7 @@ async def get_movies(
         "prev_page": prev_page,
         "next_page": next_page,
         "total_pages": pages,
-        "total_items": items,
+        "total": items,
     }
 
 
